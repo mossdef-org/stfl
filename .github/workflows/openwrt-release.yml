@@ -72,8 +72,10 @@ jobs:
             target: arm_fa526
           - version: openwrt-25.12
             target: arm_xscale
-          - version: openwrt-25.12
-            target: armeb_xscale
+          # Matrix is kept aligned with newsboat's: libstfl is only consumed as a
+          # build dependency of newsboat, so there's no point building it for arches
+          # newsboat can't target. armeb_xscale (not in rust's RUST_ARCH_DEPENDS) and
+          # mips64el_mips64r2 (rust host toolchain fails to build) are therefore omitted.
           - version: openwrt-25.12
             target: i386_pentium-mmx
           - version: openwrt-25.12
@@ -84,8 +86,6 @@ jobs:
             target: mips64_mips64r2
           - version: openwrt-25.12
             target: mips64_octeonplus
-          - version: openwrt-25.12
-            target: mips64el_mips64r2
           - version: openwrt-25.12
             target: mips_24kc
           - version: openwrt-25.12
